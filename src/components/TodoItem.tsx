@@ -8,9 +8,14 @@
 
 import styles from './TodoItem.module.css'
 
-const TodoItem: React.FC<{ text: string }> = (props) => {
+const TodoItem: React.FC<{ text: string, id: string, removeTodo: (todoId: string) => void }> = (props) => {
+
+    const removeTodoHandler = () => {
+        props.removeTodo(props.id)
+    }
+
     return (
-        <li className={styles.item}>{props.text}</li>
+        <li className={styles.item} onClick={removeTodoHandler}>{props.text}</li>
     )
 }
 

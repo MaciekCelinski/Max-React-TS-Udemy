@@ -13,10 +13,17 @@ function App() {
     setTodos([...todos, newTodo])
   };
 
+  const removeTodo = (todoId: string) => {
+    // setTodos(todos.filter(todo => todo.id !== todoId)) // <== my way because as I remember here we are returning new array
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.id !== todoId)
+    })
+  }
+
   return (
     <div className="App">
       <NewTodo onAddTodo={addTodoHandler} />
-      <Todos items={todos} />
+      <Todos items={todos} removeTodo={removeTodo} />
     </div>
   );
 }
