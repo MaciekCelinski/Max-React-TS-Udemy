@@ -1,17 +1,13 @@
-// import Todo from "../models/todo"
-
-// const TodoItem: React.FC<{ item: Todo }> = (props) => {
-//     return (
-//         <li key={props.item.id}>{props.item.text}</li>
-//     )
-// }
-
+import {useContext} from 'react'
+import { TodosContext } from '../store/todo-context'
 import styles from './TodoItem.module.css'
 
-const TodoItem: React.FC<{ text: string, id: string, removeTodo: (todoId: string) => void }> = (props) => {
+const TodoItem: React.FC<{ text: string, id: string} > = (props) => {
+
+    const todosContext = useContext(TodosContext)
 
     const removeTodoHandler = () => {
-        props.removeTodo(props.id)
+        todosContext.removeTodo(props.id)
     }
 
     return (
